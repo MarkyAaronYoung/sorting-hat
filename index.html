@@ -4,10 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sorting-Hat</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="main.css">
-</head>
 <body>
-  <h1>Sorting-Hat</h1>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">THE SORTING HAT</h1>
+      <p class="lead">Click the button below and then enter your name where it says "username" to be sorted into your house!</p>
+      <button type="button" class="btn btn-primary">Let's Begin Sorting Shall We?</button>
+
+    </div>
+  </div>
+  <form class="form-inline">
+    <div class="input-group mb-2 mr-sm-2">
+      <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Username">
+    </div>
+  
+    <button onclick="myFunction()" type="submit" class="btn btn-primary mb-2">Submit</button>
+  </form>
+  
   <script src="main.js"></script>
 </body>
 </html>

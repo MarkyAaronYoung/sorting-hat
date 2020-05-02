@@ -1,4 +1,3 @@
-
 const students = [
   { fullName: '',
     house: 'Gryffindor'
@@ -29,14 +28,18 @@ const buildStudentCards = (studentCollection) => {
 
   for (let i = 0; i < studentCollection.length; i++) {
     domString += `
-      <div id="studentContainer">
-        <h2>${studentCollection[i].fullName}</h2>
-        <h3>${studentCollection[i].house}</h3>        
+      <div class="card" id="studentCards" style="width: 18rem;">
+         <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">${studentCollection[i].fullName}</h5>
+          <p class="card-text">${studentCollection[i].house}</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
       </div>
     `;
   }
 
-  printToDom('#studentContainer', domString);
+  printToDom('#studentCards', domString);
 }
 
 // const filterPiesEvent = (event) => {

@@ -1,81 +1,52 @@
-const students = [
-  { fullName: '',
-    house: 'Gryffindor'
-  },
-  {
-    fullName: '',
-    house: 'Hufflepuff'
-  },
-  {
-  fullName: '',
-  house: 'Slytherin'
-  },
-  {
-    fullName: '',
-    house: 'Ravenclaw'
-  }
-]
+// I want to create a student array so I can add new Hogwart students into as objects
+// They have to be assigned to one of four houses that are constants
+// I will need to create an array of expelled students
 
-console.log(students);
+let students = [];
+const houses = ['Gryffindor', 'Hufflepuff', 'Ravenclaw', 'Slytherin'];
+let expelledStudents = [];
 
+// This is my print to dom function
 const printToDom = (selector, textToPrint) => {
   const selectedDiv = document.querySelector(selector);
   selectedDiv.innerHTML = textToPrint;
 }
+ //function to add value of button id #sortButton to student array
+const addStudent = () => {
+  const studentName = document.getElementById('sortButton').value;
+  return students.push(studentName);
+}
 
-const buildStudentCards = (studentCollection) => {
-  let domString = '';
+// function that creates a card by looping over the new student array created by the addStudent function
 
-  for (let i = 0; i < studentCollection.length; i++) {
+const buildStudentCards = (studentArray) => {
+  let domString = ''; 
+  
+  for (let i = 0; i < studentArray.length; i++){
+  
     domString += `
-      <div class="card" id="studentCards" style="width: 18rem;">
-         <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+      <div class="card" style="width: 18rem;">
         <div class="card-body">
-          <h5 class="card-title">${studentCollection[i].fullName}</h5>
-          <p class="card-text">${studentCollection[i].house}</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <h5 class="card-title">${studentArray[i].name}</h5>
+          <p class="card-text">${studentArray[i].house}</p>
+          <a href="#" class="btn btn-primary">Expel</a>
         </div>
       </div>
     `;
-  }
+  };
+  console.log('domString');
+  return domString;
+};
 
-  printToDom('#studentCards', domString);
+// click event when the button with id = sortButton is pushed
+const clickEvents = () => {
+    document.querySelector('#sortButton').addEventListener('click', addStudent);
 }
 
-// const filterPiesEvent = (event) => {
-//   const buttonId = event.target.id;
-//   // console.log('click worked');
-//   // console.log(event.target);
-//   //get all pies
-//   // only show luke pies
-//   const tempPieCollection = [];
-
-//   if (buttonId === 'all') {
-//     buildPies(pies);
-//     return;
-//   }
-
-//   for (let i = 0; i < pies.length; i++) {
-//     if (pies[i].owner === buttonId) {
-//       tempPieCollection.push(pies[i]);
-//     }
-//   }
-
-//   buildPies(tempPieCollection);
-// }
-
-
-// const clickEvents = () => {
-//  document.querySelector('#luke').addEventListener('click', filterPiesEvent);
-//  document.querySelector('#michael').addEventListener('click', filterPiesEvent);
-//  document.querySelector('#matt').addEventListener('click', filterPiesEvent);
-//  document.querySelector('#all').addEventListener('click', filterPiesEvent);
-// }
-
-
+// init function to call buildStudentCards and clickEvent
 const init = () => {
-  buildStudentCards(students);
+  buildStudentCards(addStudent);
   clickEvents();
-}
+};
 
 init();

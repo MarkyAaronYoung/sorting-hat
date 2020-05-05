@@ -34,18 +34,18 @@ const buildStudentCards = (studentArray) => {
       </div>
     `;
   };
-  console.log('domString');
-  return domString;
-};
+  printToDom('#studentCard', domString);
+  console.log('do I work?')
+}
 
 // click event when the button with id = sortButton is pushed
 const clickEvents = () => {
-    document.querySelector('#sortButton').addEventListener('click', addStudent);
+    document.querySelector('#sortButton').addEventListener('click', buildStudentCards);
 }
 
 // init function to call buildStudentCards and clickEvent
 const init = () => {
-  buildStudentCards(addStudent);
+  buildStudentCards(students);
   clickEvents();
 };
 

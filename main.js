@@ -13,15 +13,19 @@ const printToDom = (selector, textToPrint) => {
 }
  //function to add value of button id #sortButton to student array
 const addStudent = () => {
-  const studentName = document.getElementById('sortButton').value;
+  const studentName = document.getElementById('nameInput').value;
+  console.log(studentName);
   return students.push(studentName);
+  
 }
 
 // function that creates a card by looping over the new student array created by the addStudent function
 
 const buildStudentCards = (studentArray) => {
   let domString = ''; 
-  
+
+  addStudent();
+
   for (let i = 0; i < studentArray.length; i++){
   
     domString += `

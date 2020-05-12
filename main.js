@@ -3,7 +3,22 @@
 // I will need to create an array of expelled students
 
 let students = [];
-const houses = ['Gryffindor', 'Hufflepuff', 'Ravenclaw', 'Slytherin'];
+
+const houses = [
+  {
+    house: 'gryffindor',
+  },
+  {
+    house: 'hufflepuff',
+  },
+  {
+    house: 'ravenclaw',
+  },
+  {
+    house: 'slytherin'
+  }
+]
+
 let expelledStudents = [];
 
 // This is my print to dom function
@@ -16,23 +31,29 @@ const addStudent = () => {
   const studentName = document.getElementById('nameInput').value;
   console.log(studentName);
   return students.push(studentName);
-  
+  console.log(students); 
 }
+
+  const sortedHouse = houses[Math.floor(Math.random() * 4)].house
+  console.log(sortedHouse);
+
+
+
 
 // function that creates a card by looping over the new student array created by the addStudent function
 
-const buildStudentCards = (studentArray) => {
+const buildStudentCards = (students) => {
   let domString = ''; 
 
   addStudent();
 
-  for (let i = 0; i < studentArray.length; i++){
+  for (let i = 0; i < students.length; i++){
   
     domString += `
       <div class="card" style="width: 18rem;">
         <div class="card-body">
-          <h5 class="card-title">${studentArray[i].name}</h5>
-          <p class="card-text">${studentArray[i].house}</p>
+          <h5 class="card-title">${students[i].name}</h5>
+          <p class="card-text">${sortedHouse}</p>
           <a href="#" class="btn btn-primary">Expel</a>
         </div>
       </div>

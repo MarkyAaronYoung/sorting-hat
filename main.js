@@ -1,9 +1,20 @@
-// I want to create a student array so I can add new Hogwart students into as objects
-// They have to be assigned to one of four houses that are constants
-// I will need to create an array of expelled students
-
 let students = [];
-const houses = ['Gryffindor', 'Hufflepuff', 'Ravenclaw', 'Slytherin'];
+
+const houses = [
+  {
+    house: 'gryffindor',
+  },
+  {
+    house: 'hufflepuff',
+  },
+  {
+    house: 'ravenclaw',
+  },
+  {
+    house: 'slytherin'
+  }
+]
+
 let expelledStudents = [];
 
 // This is my print to dom function
@@ -11,20 +22,22 @@ const printToDom = (selector, textToPrint) => {
   const selectedDiv = document.querySelector(selector);
   selectedDiv.innerHTML = textToPrint;
 }
- //function to add value of button id #sortButton to student array
-const addStudent = () => {
-  const studentName = document.getElementById('nameInput').value;
+ //function to add value of button id #sortButton to student array/ This won't console.log out.
+  const studentName = document.getElementById('studentName').value;
   console.log(studentName);
-  return students.push(studentName);
+ 
+  const sortedHouse = houses[Math.floor(Math.random() * 4)].house
+  console.log(sortedHouse);
+
   
-}
+  
+
 
 // function that creates a card by looping over the new student array created by the addStudent function
 
 const buildStudentCards = (studentArray) => {
   let domString = ''; 
-
-  addStudent();
+  
 
   for (let i = 0; i < studentArray.length; i++){
   
@@ -32,7 +45,7 @@ const buildStudentCards = (studentArray) => {
       <div class="card" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">${studentArray[i].name}</h5>
-          <p class="card-text">${studentArray[i].house}</p>
+          <p class="card-text">${sortedHouse}</p>
           <a href="#" class="btn btn-primary">Expel</a>
         </div>
       </div>
@@ -52,5 +65,3 @@ const init = () => {
   buildStudentCards(students);
   clickEvents();
 };
-
-init();
